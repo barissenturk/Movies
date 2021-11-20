@@ -1,0 +1,30 @@
+.paginationContainer {
+  height: 100px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.paginationBox {
+  color: black;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: bolder;
+  position: relative;
+  border-radius: 4px;
+  display: block;
+  text-align: center;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  transition: 0.3s;
+  font-family: "Arial", sans-serif;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.paginationBox:hover {
+  background-color: greenyellow;
+}
+.active {
+  background-color: green;
+  transition: 0.3s;
+}
