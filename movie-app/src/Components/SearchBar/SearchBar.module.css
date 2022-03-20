@@ -22,3 +22,6 @@
 *:focus {
   outline: none;
 }
+.searchBarContent {
+  width: 100%;
+}

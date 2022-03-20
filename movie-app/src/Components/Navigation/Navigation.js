@@ -5,8 +5,6 @@ import { NavLink } from "react-router-dom";
 export default function Navigation() {
   return (
     <div className={styles.navigationContainer}>
-      <img className={styles.logo} src={Logo} alt="logo" />
-
       <div className={styles.navBox}>
         <NavLink
           className={({ isActive }) => (isActive ? styles.active : styles.Link)}

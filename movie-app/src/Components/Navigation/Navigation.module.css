@@ -2,13 +2,13 @@
 .navigationContainer {
   width: 100%;
   height: 80px;
-  background-color: black;
+  background-color: transparent;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+
+  /* justify-content: space-between; */
 }
-.logo {
-  margin-left: 150px;
-}
+
 .navBox {
   display: flex;
   flex-wrap: nowrap;
@@ -18,17 +18,17 @@
   font-family: "Raleway", sans-serif;
   font-style: normal;
   font-weight: 400px;
-  font-size: 18px;
+  font-size: 32px;
   color: #ffffff;
-  margin: 30px 10px 0 50px;
+  margin: 20px 10px 0 50px;
 }
 .active {
   text-decoration: none;
   font-family: "Raleway", sans-serif;
   font-style: normal;
   font-weight: 400px;
-  font-size: 18px;
-  color: #ffffff;
-  margin: 30px 10px 20px 50px;
-  border-bottom: 3px solid white;
+  font-size: 32px;
+  color: #dcf836;
+  margin: 20px 10px 20px 50px;
+  border-bottom: 5px solid #dcf836;
 }

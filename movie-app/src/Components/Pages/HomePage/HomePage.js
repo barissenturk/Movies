@@ -5,6 +5,7 @@ import Navigation from "../../Navigation/Navigation";
 import SearchBar from "../../SearchBar/SearchBar";
 import nullImg from "../../../Icons/null-img.jpg";
 import Pagination from "../../Pagination/Pagination";
+import { Link } from "react-router-dom";
 
 export default function Movies() {
   const [movies, SetMovies] = useState({});
@@ -39,21 +40,24 @@ export default function Movies() {
       {movies.length > 0 &&
         movies.map((movie) => (
           <div className={styles.movieBox} key={movie.id}>
-            <div className={styles.posterBox}>
-              <img
-                className={styles.poster}
-                src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/w500/` + movie.poster_path
-                    : nullImg
-                }
-                alt="poster"
-              />
-              <div className={styles.overviewBox}>
-                <div className={styles.title}>{movie.title}</div>
-                <div className={styles.overview}>{movie.overview}</div>
+            <Link className={styles.link} to={`/${movie.id}/movieDetail`}>
+              <div className={styles.posterBox}>
+                <img
+                  className={styles.poster}
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/` + movie.poster_path
+                      : nullImg
+                  }
+                  alt="poster"
+                />
+
+                <div className={styles.overviewBox}>
+                  <div className={styles.title}>{movie.title}</div>
+                  <div className={styles.overview}>{movie.overview}</div>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       <Pagination

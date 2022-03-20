@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Rubik:ital,wght@1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Rubik:ital,wght@0,700;1,300&display=swap");
+
+.detailContainer {
+  display: flex row;
+  background-color: #020d18;
+}
+.header {
+  overflow: hidden;
+  position: relative;
+  height: 700px;
+}
+
+.backgroundImg {
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
+.NavigationBar {
+  position: relative;
+  margin-top: 50px;
+}
+.trailAndOverwievContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: -300px 0 0px 75px;
+  position: relative;
+}
+
+.posterContainer {
+  margin: 0px 100px 0 15%;
+  display: flex;
+  max-height: 550px;
+  max-width: 366.6px;
+  box-shadow: 10px 10px 30px;
+}
+.poster {
+  max-height: 550px;
+  max-width: 366.6px;
+}
+.overwievContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 42px;
+  line-height: 42px;
+  color: white;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.star {
+  display: flex;
+  margin-top: 15px;
+  color: white;
+  font-size: 24px;
+}
+
+.starIcon {
+  height: 30px;
+  width: 30px;
+  margin-right: 9px;
+}
+
+.trailLink {
+  background-color: #dd003f;
+  height: 55px;
+  width: 225px;
+  border-radius: 5px;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+}
+.trailLinkText {
+  font-family: "Dosis", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.subNavMenuContainer {
+  display: flex;
+  flex-direction: row;
+}
+.subNavMenu {
+  margin: 60px 20px 0 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 400px;
+  font-size: 18px;
+  padding: 15px 0;
+}
+.active {
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 400px;
+  font-size: 18px;
+  margin: 60px 20px 0 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #dcf836;
+  border-bottom: 5px solid #dcf836;
+  padding: 15px 0;
+}

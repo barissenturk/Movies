@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./SearchBar.module.css";
 export default function SearchBar({ setSearch }) {
   return (
-    <div>
+    <div className={styles.searchBarContent}>
       <input
         className={styles.searchBar}
         placeholder="Search..."
