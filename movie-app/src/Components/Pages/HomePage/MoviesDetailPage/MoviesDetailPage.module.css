@@ -79,6 +79,7 @@
   margin-top: 50px;
   text-align: center;
   justify-content: center;
+  cursor: pointer;
 }
 .trailLinkText {
   font-family: "Dosis", sans-serif;

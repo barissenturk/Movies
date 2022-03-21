@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: #020d18;
+  min-height: 937px;
 }
 
 .movieBox {

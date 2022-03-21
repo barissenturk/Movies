@@ -53,24 +53,26 @@ export default function Pagination({ totalpage, currentPage, setCurrentPage }) {
           {currentPage + 2}
         </div>
       ) : null}
-      {currentPage < 497 ? (
+      {currentPage < totalpage - 1 ? (
         <div className={styles.paginationDot}>...</div>
       ) : null}
-
-      <div
-        className={styles.paginationBox}
-        onClick={() => setCurrentPage(totalpage)}
-      >
-        {totalpage}
-      </div>
-
-      <div
-        className={styles.paginationBoxPrev}
-        onClick={() => setCurrentPage(currentPage + 1)}
-      >
-        {" "}
-        {"NEXT"}
-      </div>
+      {currentPage < totalpage ? (
+        <div
+          className={styles.paginationBox}
+          onClick={() => setCurrentPage(totalpage)}
+        >
+          {totalpage}
+        </div>
+      ) : null}
+      {currentPage < totalpage ? (
+        <div
+          className={styles.paginationBoxPrev}
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          {" "}
+          {"NEXT"}
+        </div>
+      ) : null}
     </div>
   );
 }

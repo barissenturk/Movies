@@ -123,7 +123,9 @@ export default function MoviesDetailPage() {
           {subNavMenu == 1 ? (
             <Overview movie={movie} movieGenres={movieGenres} images={images} />
           ) : null}
-          {subNavMenu == 2 ? <Cast movieId={params.id} /> : null}
+          {subNavMenu == 2 ? (
+            <Cast movieId={params.id} movie={movie} movieGenres={movieGenres} />
+          ) : null}
         </div>
       </div>
       {/* <div className={styles.creditContainer}>Credit</div> */}

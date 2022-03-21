@@ -57,11 +57,13 @@ export default function Movies() {
             </Link>
           </div>
         ))}
-      <Pagination
-        totalpage={totalpage}
-        currentPage={currentPage}
-        setCurrentPage={(number) => setCurrentPage(number)}
-      />
+      {movies.length > 0 && totalpage > 1 ? (
+        <Pagination
+          totalpage={totalpage}
+          currentPage={currentPage}
+          setCurrentPage={(number) => setCurrentPage(number)}
+        />
+      ) : null}
     </div>
   );
 }
