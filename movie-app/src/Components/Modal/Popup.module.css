@@ -1,0 +1,47 @@
+/* Popup style */
+.popupBox {
+  position: fixed;
+  background: #00000050;
+  opacity: 0.3;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.popupBoxSpec {
+  position: fixed;
+  background: #00000050;
+  opacity: 1;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.box {
+  position: relative;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: calc(100vh - 70vh);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.closeIcon {
+  content: "x";
+  cursor: pointer;
+  position: fixed;
+  right: calc(35% - 30px);
+  top: calc(100vh - 71vh);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.userImg {
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}

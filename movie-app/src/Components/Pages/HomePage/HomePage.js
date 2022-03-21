@@ -8,7 +8,7 @@ import Pagination from "../../Pagination/Pagination";
 import { Link } from "react-router-dom";
 
 export default function Movies() {
-  const [movies, SetMovies] = useState({});
+  const [movies, setMovies] = useState({});
   const [search, setSearch] = useState("");
   const [totalpage, setTotalPage] = useState();
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,13 +24,10 @@ export default function Movies() {
 
   const fetchMovies = useCallback(() => {
     axios.get(api).then((res) => {
-      SetMovies(res.data.results);
+      setMovies(res.data.results);
       setTotalPage(res.data.total_pages);
-      console.log(res.data);
     });
   }, [api]);
-  console.log(currentPage);
-  console.log(search);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.navigationContainer}>

@@ -3,20 +3,28 @@ import { useParams } from "react-router";
 import axios from "axios";
 
 import Navigation from "../../../Navigation/Navigation";
-import Video from "../../../Video/Video";
-import Overview from "../../../Overview/Overview";
+import Overview from "../Overview/Overview";
 
 import styles from "./MoviesDetailPage.module.css";
 
 import nullImg from "../../../../Icons/null-img.jpg";
 import star from "../../../../Icons/star.png";
+import VideoPopup from "../../../VideoPopup/VideoPopup";
+import Cast from "../Cast/Cast";
 
 export default function MoviesDetailPage() {
   const params = useParams();
-  const [movie, SetMovie] = useState({});
+  const [movie, setMovie] = useState({});
   const [images, setImages] = useState({});
-  const [movieGenres, SetMovieGenres] = useState({});
-  const [subNavMenu, SetsubNavMenu] = useState(1);
+  const [movieGenres, setMovieGenres] = useState({});
+  const [subNavMenu, setsubNavMenu] = useState(1);
+  const [backdrop, setBackdrop] = useState();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     fetchDetail();
@@ -26,29 +34,38 @@ export default function MoviesDetailPage() {
 
   const fetchDetail = async () => {
     await axios.get(api).then((res) => {
-      SetMovie(res.data);
-      SetMovieGenres(res.data.genres);
+      setMovie(res.data);
+      setMovieGenres(res.data.genres);
       setImages(res.data.images.backdrops);
-      console.log(res.data.images.backdrops);
+      setBackdrop(res.data.images.backdrops[0]);
     });
   };
-  console.log(subNavMenu);
   return (
     <div className={styles.detailContainer}>
       <div className={styles.header}>
-        <img
-          className={styles.backgroundImg}
-          src="http://blockter.bdiakcml8h-e92498n216kr.p.runcloud.link/wp-content/themes/blockter/images/banner-bg.jpg"
-          alt=""
-        />
+        {backdrop === undefined || null ? (
+          <img
+            className={styles.backgroundImg}
+            src="http://blockter.bdiakcml8h-e92498n216kr.p.runcloud.link/wp-content/themes/blockter/images/banner-bg.jpg"
+            alt=""
+          />
+        ) : (
+          <img
+            className={styles.backgroundImg}
+            src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${backdrop.file_path}`}
+            alt=""
+          />
+        )}
+
+        {/* (
+         
+        )} */}
         <div className={styles.NavigationBar}>
           <Navigation />
         </div>
       </div>
 
       <div className={styles.trailAndOverwievContainer}>
-        {/* <Video movieId={params.id} /> */}
-
         <div className={styles.posterContainer}>
           <img
             className={styles.poster}
@@ -66,14 +83,22 @@ export default function MoviesDetailPage() {
             <img className={styles.starIcon} src={star} />
             {movie.vote_average} / 10
           </div>
-          <div className={styles.trailLink}>
+          <div
+            className={styles.trailLink}
+            onClick={() => {
+              togglePopup();
+            }}
+          >
             <p className={styles.trailLinkText}>watch trailer </p>
+            {isOpen ? (
+              <VideoPopup movieId={params.id} handleClose={togglePopup} />
+            ) : null}
           </div>
           <div className={styles.subNavMenuContainer}>
             <div
               className={subNavMenu === 1 ? styles.active : styles.subNavMenu}
               onClick={() => {
-                SetsubNavMenu(1);
+                setsubNavMenu(1);
               }}
             >
               overview
@@ -81,23 +106,24 @@ export default function MoviesDetailPage() {
             <div
               className={subNavMenu === 2 ? styles.active : styles.subNavMenu}
               onClick={() => {
-                SetsubNavMenu(2);
+                setsubNavMenu(2);
               }}
             >
-              overview2
+              cast
             </div>
             <div
               className={subNavMenu === 3 ? styles.active : styles.subNavMenu}
               onClick={() => {
-                SetsubNavMenu(3);
+                setsubNavMenu(3);
               }}
             >
-              overview3
+              Recommendations
             </div>
           </div>
           {subNavMenu == 1 ? (
             <Overview movie={movie} movieGenres={movieGenres} images={images} />
           ) : null}
+          {subNavMenu == 2 ? <Cast movieId={params.id} /> : null}
         </div>
       </div>
       {/* <div className={styles.creditContainer}>Credit</div> */}

@@ -26,11 +26,8 @@ export default function TvShowPage() {
     axios.get(api).then((res) => {
       setTvShows(res.data.results);
       setTotalPage(res.data.total_pages);
-      console.log(res.data);
     });
   }, [api]);
-
-  console.log(search);
 
   return (
     <div className={styles.mainContainer}>

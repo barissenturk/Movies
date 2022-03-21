@@ -34,7 +34,7 @@
 }
 
 .posterContainer {
-  margin: 0px 100px 0 15%;
+  margin: 0px 100px 100px 15%;
   display: flex;
   max-height: 550px;
   max-width: 366.6px;

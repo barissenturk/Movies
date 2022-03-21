@@ -26,11 +26,8 @@ export default function ActorsPage() {
     axios.get(api).then((res) => {
       setActors(res.data.results);
       setTotalPage(res.data.total_pages);
-      console.log(res.data);
     });
   }, [api]);
-  console.log(currentPage);
-  console.log(search);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.navigationContainer}>

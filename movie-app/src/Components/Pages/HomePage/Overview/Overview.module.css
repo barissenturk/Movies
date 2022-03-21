@@ -45,8 +45,6 @@ p {
   text-transform: uppercase;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  border-bottom: 1px solid #405266;
-  clear: both;
   padding-bottom: 15px;
   color: #ffffff;
 }
@@ -80,4 +78,13 @@ p {
   font-size: 1rem;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
+}
+.popupImgBox {
+  display: flex;
+  cursor: pointer;
+}
+.backdropImgBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
