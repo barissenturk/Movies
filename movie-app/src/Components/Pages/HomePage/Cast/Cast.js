@@ -22,7 +22,6 @@ export default function Cast({ movieId, movie, movieGenres }) {
       setCast(res.data.cast);
     });
   };
-  console.log(cast);
   return (
     <div className={styles.castContainer}>
       <div className={styles.castBox}>

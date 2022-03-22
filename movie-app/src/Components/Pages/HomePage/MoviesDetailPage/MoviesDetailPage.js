@@ -11,6 +11,7 @@ import nullImg from "../../../../Icons/null-img.jpg";
 import star from "../../../../Icons/star.png";
 import VideoPopup from "../../../VideoPopup/VideoPopup";
 import Cast from "../Cast/Cast";
+import SimilarMovies from "../SimilarMovies/SimilarMovies";
 
 export default function MoviesDetailPage() {
   const params = useParams();
@@ -19,6 +20,9 @@ export default function MoviesDetailPage() {
   const [movieGenres, setMovieGenres] = useState({});
   const [subNavMenu, setsubNavMenu] = useState(1);
   const [backdrop, setBackdrop] = useState();
+  const [video, setvideo] = useState();
+  const [teaser, setteaser] = useState();
+  const [similarMovie, setSimilarMovie] = useState({});
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -26,9 +30,35 @@ export default function MoviesDetailPage() {
     setIsOpen(!isOpen);
   };
 
+  const getTeaser = () => {
+    setteaser(video[video.length - 1].key);
+  };
+
   useEffect(() => {
     fetchDetail();
+    fetchTrail();
+    FetchSimilarMovie();
   }, []);
+
+  const FetchSimilarMovie = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`
+      )
+      .then((res) => {
+        setSimilarMovie(res.data.results);
+      });
+  };
+
+  const fetchTrail = async () => {
+    await axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US`
+      )
+      .then((res) => {
+        setvideo(res.data.results);
+      });
+  };
 
   let api = `https://api.themoviedb.org/3/movie/${params.id}?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&append_to_response=images&include_image_language=en,null`;
 
@@ -40,6 +70,7 @@ export default function MoviesDetailPage() {
       setBackdrop(res.data.images.backdrops[0]);
     });
   };
+
   return (
     <div className={styles.detailContainer}>
       <div className={styles.header}>
@@ -87,11 +118,17 @@ export default function MoviesDetailPage() {
             className={styles.trailLink}
             onClick={() => {
               togglePopup();
+              getTeaser();
             }}
           >
             <p className={styles.trailLinkText}>watch trailer </p>
             {isOpen ? (
-              <VideoPopup movieId={params.id} handleClose={togglePopup} />
+              <VideoPopup
+                movieId={params.id}
+                handleClose={togglePopup}
+                teaserKey={teaser}
+                video={video}
+              />
             ) : null}
           </div>
           <div className={styles.subNavMenuContainer}>
@@ -125,6 +162,9 @@ export default function MoviesDetailPage() {
           ) : null}
           {subNavMenu == 2 ? (
             <Cast movieId={params.id} movie={movie} movieGenres={movieGenres} />
+          ) : null}
+          {subNavMenu == 3 ? (
+            <SimilarMovies similarMovie={similarMovie} />
           ) : null}
         </div>
       </div>
