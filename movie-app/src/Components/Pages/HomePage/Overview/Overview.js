@@ -21,7 +21,7 @@ export default function Overview({ movie, movieGenres, images }) {
       <div className={styles.overview}>
         {movie.overview}
         <div className={styles.backdropImgContainer}>
-          <h2 className={styles.backdropImgContainer}>media</h2>
+          <h2 className={styles.backdropImgContainerTitle}>media</h2>
           <div className={styles.backdropImgBox}>
             {images.length > 0 &&
               images.slice(0, noOfElement).map((image) => (

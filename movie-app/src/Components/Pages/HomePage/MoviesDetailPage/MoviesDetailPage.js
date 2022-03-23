@@ -102,7 +102,7 @@ export default function MoviesDetailPage() {
             className={styles.poster}
             src={
               movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/w500/` + movie.poster_path
+                ? `https://image.tmdb.org/t/p/w400/` + movie.poster_path
                 : nullImg
             }
             alt="poster"

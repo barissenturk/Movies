@@ -88,3 +88,8 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.backdropImgContainerTitle {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #405266;
+}
