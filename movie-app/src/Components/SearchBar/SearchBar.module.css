@@ -1,15 +1,14 @@
 .searchBar {
-  height: 31px;
-  width: 288px;
-  margin: 24px 10px 0 50px;
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(217, 215, 215, 0.25);
+  height: auto;
+  width: auto;
+  margin: 0px;
+  background: transparent;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  padding-left: 15px;
+  padding: 0 0 0 15px;
+  border: none;
 }
 
 .searchBar::placeholder {
@@ -24,4 +23,25 @@
 }
 .searchBarContent {
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.searchResultBox {
+  /* height: 30px; */
+  width: 788px;
+  background-color: #ffffff;
+  margin-left: 50px;
+  border-radius: 3px;
+  margin-top: 1px;
+  /* padding: 8px 0; */
+}
+.searchBarBox {
+  height: 38px;
+  width: 788px;
+  background-color: #ffffff;
+  margin: 24px 10px 0 50px;
+  display: flex;
+  border-radius: 4px;
+  border-top: 1px solid rgba(227, 227, 227, 1);
+  border-bottom: 1px solid rgba(227, 227, 227, 1);
 }

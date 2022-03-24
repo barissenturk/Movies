@@ -21,12 +21,17 @@ export default function Movies() {
   let popularMoviesApi = `https://api.themoviedb.org/3/movie/popular?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
   let topRatedMoviesApi = `https://api.themoviedb.org/3/movie/top_rated?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
   let upcomingMoviesApi = `https://api.themoviedb.org/3/movie/upcoming?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
+  let searchApi = `https://api.themoviedb.org/3/search/multi?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1&include_adult=false?query=${search}`;
 
   useEffect(() => {
     fetchPopularMovies();
     fetchTopRatedMovies();
     fetchUpcomingMovies();
-  }, []);
+  }, [search]);
+
+  {
+    console.log(search);
+  }
 
   const fetchPopularMovies = useCallback(() => {
     axios.get(popularMoviesApi).then((res) => {
@@ -47,7 +52,7 @@ export default function Movies() {
     <div className={styles.mainContainer}>
       <div className={styles.navigationContainer}>
         <Navigation />
-        <SearchBar setSearch={(text) => setSearch(text)} />
+        <SearchBar setSearch={(text) => setSearch(text)} search={search} />
       </div>
 
       <div className={styles.movieContainer}>

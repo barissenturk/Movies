@@ -26,7 +26,7 @@
   height: 789px;
   background-color: #020d18;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   background-image: url(http://blockter.bdiakcml8h-e92498n216kr.p.runcloud.link/wp-content/uploads/2017/12/slider-bg2.jpg?id=160);
   /* justify-content: space-between; */
 }
