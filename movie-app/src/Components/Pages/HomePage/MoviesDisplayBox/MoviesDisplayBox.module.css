@@ -1,0 +1,72 @@
+.popularmovieContainer {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  width: auto;
+  margin-bottom: 100px;
+}
+.movieBox {
+  margin: 15px;
+}
+.posterBox {
+  height: auto;
+  width: auto;
+  position: relative;
+  padding-bottom: 40px;
+}
+.poster {
+  height: 375px;
+  width: 250px;
+  box-shadow: 10px 10px 30px;
+  border-radius: 8px;
+}
+.link {
+  text-decoration: none;
+  box-shadow: 10px 10px 30px;
+  color: black;
+}
+.title {
+  font-family: "Dosis", sans-serif;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.starIcon {
+  height: 12px;
+  width: 12px;
+  margin-right: 3px;
+}
+.subcontentBox {
+  margin-right: 20px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 28px;
+  color: #abb7c4;
+  text-align: center;
+}
+
+/* width */
+.popularmovieContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Track */
+.popularmovieContainer::-webkit-scrollbar-track {
+  background: transparent;
+  border: none;
+}
+
+/* Handle */
+.popularmovieContainer::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+.popularmovieContainer::-webkit-scrollbar-thumb:hover {
+  background: #dbdbdb;
+}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-import star from "../../../../Icons/star.png";
+import star from "../../../../../Icons/star.png";
 import styles from "./SimilarMovies.module.css";
 
 export default function SimilarMovies({ similarMovie }) {
@@ -11,7 +10,6 @@ export default function SimilarMovies({ similarMovie }) {
     setnoOfElement(noOfElement + 5);
   };
 
-  console.log(similarMovie);
   return (
     <div className={styles.similarMoviesContainer}>
       <div className={styles.similarMoviesBox}>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Popup from "../../../Modal/Popup";
+import Popup from "../../../../Modal/Popup";
 import styles from "./Overview.module.css";
 
 export default function Overview({ movie, movieGenres, images }) {

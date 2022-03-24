@@ -3,15 +3,15 @@ import { useParams } from "react-router";
 import axios from "axios";
 
 import Navigation from "../../../Navigation/Navigation";
-import Overview from "../Overview/Overview";
+import Overview from "./Overview/Overview";
 
 import styles from "./MoviesDetailPage.module.css";
 
 import nullImg from "../../../../Icons/null-img.jpg";
 import star from "../../../../Icons/star.png";
 import VideoPopup from "../../../VideoPopup/VideoPopup";
-import Cast from "../Cast/Cast";
-import SimilarMovies from "../SimilarMovies/SimilarMovies";
+import Cast from "./Cast/Cast";
+import SimilarMovies from "./SimilarMovies/SimilarMovies";
 
 export default function MoviesDetailPage() {
   const params = useParams();

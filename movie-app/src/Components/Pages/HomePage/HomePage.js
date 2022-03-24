@@ -1,69 +1,63 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 import styles from "./HomePage.module.css";
+
 import Navigation from "../../Navigation/Navigation";
 import SearchBar from "../../SearchBar/SearchBar";
 import nullImg from "../../../Icons/null-img.jpg";
-import Pagination from "../../Pagination/Pagination";
-import { Link } from "react-router-dom";
+
+import star from "../../../Icons/star.png";
+import MoviesDisplayBox from "./MoviesDisplayBox/MoviesDisplayBox";
 
 export default function Movies() {
-  const [movies, setMovies] = useState({});
-  const [search, setSearch] = useState("");
-  const [totalpage, setTotalPage] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [popularmovies, setPopularMovies] = useState({});
+  const [topRatedmovies, setTopRatedMovies] = useState({});
+  const [upcomingMovies, setUpcomingMovies] = useState({});
 
-  let api =
-    search === ""
-      ? `https://api.themoviedb.org/3/movie/popular?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=${currentPage}`
-      : `https://api.themoviedb.org/3/search/movie?api_key=e106aa77a18cc7d63d4606b561bdda34&query=${search}`;
+  const [search, setSearch] = useState("");
+
+  let popularMoviesApi = `https://api.themoviedb.org/3/movie/popular?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
+  let topRatedMoviesApi = `https://api.themoviedb.org/3/movie/top_rated?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
+  let upcomingMoviesApi = `https://api.themoviedb.org/3/movie/upcoming?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
 
   useEffect(() => {
-    fetchMovies();
-  }, [search, currentPage]);
+    fetchPopularMovies();
+    fetchTopRatedMovies();
+    fetchUpcomingMovies();
+  }, []);
 
-  const fetchMovies = useCallback(() => {
-    axios.get(api).then((res) => {
-      setMovies(res.data.results);
-      setTotalPage(res.data.total_pages);
+  const fetchPopularMovies = useCallback(() => {
+    axios.get(popularMoviesApi).then((res) => {
+      setPopularMovies(res.data.results);
     });
-  }, [api]);
+  }, [popularMoviesApi]);
+  const fetchTopRatedMovies = useCallback(() => {
+    axios.get(topRatedMoviesApi).then((res) => {
+      setTopRatedMovies(res.data.results);
+    });
+  }, [popularMoviesApi]);
+  const fetchUpcomingMovies = useCallback(() => {
+    axios.get(upcomingMoviesApi).then((res) => {
+      setUpcomingMovies(res.data.results);
+    });
+  }, [popularMoviesApi]);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.navigationContainer}>
         <Navigation />
         <SearchBar setSearch={(text) => setSearch(text)} />
       </div>
-      {movies.length > 0 &&
-        movies.map((movie) => (
-          <div className={styles.movieBox} key={movie.id}>
-            <Link className={styles.link} to={`/${movie.id}/movieDetail`}>
-              <div className={styles.posterBox}>
-                <img
-                  className={styles.poster}
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w500/` + movie.poster_path
-                      : nullImg
-                  }
-                  alt="poster"
-                />
 
-                <div className={styles.overviewBox}>
-                  <div className={styles.title}>{movie.title}</div>
-                  <div className={styles.overview}>{movie.overview}</div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      {movies.length > 0 && totalpage > 1 ? (
-        <Pagination
-          totalpage={totalpage}
-          currentPage={currentPage}
-          setCurrentPage={(number) => setCurrentPage(number)}
-        />
-      ) : null}
+      <div className={styles.movieContainer}>
+        <h2 className={styles.categoryTitle}>What's Popular</h2>
+        <MoviesDisplayBox movies={popularmovies} />
+        <h2 className={styles.categoryTitle}>Top Rated</h2>
+        <MoviesDisplayBox movies={topRatedmovies} />
+        <h2 className={styles.categoryTitle}>Upcoming</h2>
+        <MoviesDisplayBox movies={upcomingMovies} />
+      </div>
     </div>
   );
 }
