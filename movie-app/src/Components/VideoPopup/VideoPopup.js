@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import YouTube from "react-youtube";
-import axios from "axios";
 
 import styles from "./VideoPopup.module.css";
 

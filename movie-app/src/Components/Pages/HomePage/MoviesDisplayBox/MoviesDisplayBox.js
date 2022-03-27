@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import star from "../../../../Icons/star.png";
+import nullImg from "../../../../Icons/null-img.jpg";
 import styles from "./MoviesDisplayBox.module.css";
 
 export default function MoviesDisplayBox({ movies }) {

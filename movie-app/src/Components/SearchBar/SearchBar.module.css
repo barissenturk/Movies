@@ -28,6 +28,8 @@
 }
 .searchResultBox {
   /* height: 30px; */
+  position: relative;
+  z-index: 1;
   width: 788px;
   background-color: #ffffff;
   margin-left: 50px;
