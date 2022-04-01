@@ -1,19 +1,88 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
+
+import nullimg from "../../Icons/null-img.jpg";
 export default function SearchBar({ setSearch, search, searchMovie }) {
   const mediaType = (media) => {
     switch (media.media_type) {
       case "movie":
         return (
-          <Link to={`/${media.id}/movieDetail`} key={media.id}>
-            {media.original_title}
+          <Link
+            className={styles.searchInfoContainer}
+            to={`/${media.id}/movieDetail`}
+            key={media.id}
+          >
+            <div className={styles.searchInfoBox}>
+              <div className={styles.searchImgContainer}>
+                <img
+                  alt="movie"
+                  className={styles.searchImg}
+                  src={
+                    media.poster_path != null
+                      ? `https://image.tmdb.org/t/p/w200/` + media.poster_path
+                      : nullimg
+                  }
+                />
+              </div>
+              <div className={styles.seachTitle}>
+                {media.original_title}
+                <p className={styles.releasedDate}>{media.release_date}</p>
+              </div>
+            </div>
           </Link>
         );
       case "tv":
-        return <div key={media.id}>{media.name}</div>;
+        return (
+          <Link
+            className={styles.searchInfoContainer}
+            to={`/${media.id}/movieDetail`}
+            key={media.id}
+          >
+            <div className={styles.searchInfoBox}>
+              <div className={styles.searchImgContainer}>
+                <img
+                  alt="tv"
+                  className={styles.searchImg}
+                  src={
+                    media.poster_path != null
+                      ? `https://image.tmdb.org/t/p/w200/` + media.poster_path
+                      : nullimg
+                  }
+                />
+              </div>
+              <div className={styles.seachTitle}>
+                {media.name}
+                <p className={styles.releasedDate}>{media.first_air_date}</p>
+              </div>
+            </div>
+          </Link>
+        );
       case "person":
-        return <div key={media.id}>{media.name}</div>;
+        return (
+          <Link
+            className={styles.searchInfoContainer}
+            to={`/${media.id}/movieDetail`}
+            key={media.id}
+          >
+            <div className={styles.searchInfoBox}>
+              <div className={styles.searchImgContainer}>
+                <img
+                  alt="person"
+                  className={styles.searchImg}
+                  src={
+                    media.profile_path != null
+                      ? `https://image.tmdb.org/t/p/w200/` + media.profile_path
+                      : nullimg
+                  }
+                />
+              </div>
+              <div className={styles.seachTitle}>{media.name}</div>
+            </div>
+          </Link>
+        );
+      default:
+        return null;
     }
   };
   return (

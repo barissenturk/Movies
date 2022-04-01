@@ -20,12 +20,20 @@
   overflow: hidden;
 }
 .overviewSideInfoContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 200px;
   margin: 0px 0px 0px 50px;
   color: #ffffff;
   font-size: 16px;
 }
 .overviewSideInfo {
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 200px;
 }
 h6 {
   font-family: "Dosis";
@@ -39,6 +47,9 @@ h6 {
   font-size: 16px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 200px;
+  height: auto;
 }
 p {
   margin: 0 10px 0px 0;
@@ -64,7 +75,7 @@ p {
   /* background-color: #f1c40f; */
   background-color: transparent;
   color: #fff;
-  border: 3px solid#fff;
+  border: 3px solid #fff;
   height: 50px;
   width: 120px;
   border-radius: 5px;

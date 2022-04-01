@@ -1,6 +1,6 @@
 .searchBar {
   height: auto;
-  width: auto;
+  width: 100%;
   margin: 0px;
   background: transparent;
   font-family: "Raleway", sans-serif;
@@ -27,7 +27,8 @@
   justify-content: center;
 }
 .searchResultBox {
-  /* height: 30px; */
+  max-height: 784px;
+  overflow: hidden;
   position: relative;
   z-index: 1;
   width: 788px;
@@ -46,4 +47,36 @@
   border-radius: 4px;
   border-top: 1px solid rgba(227, 227, 227, 1);
   border-bottom: 1px solid rgba(227, 227, 227, 1);
+}
+
+.searchImgContainer {
+  display: flex;
+}
+.searchInfoContainer {
+  display: flex;
+  color: black;
+  padding: 8px;
+  text-decoration: none;
+}
+.searchInfoBox {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: 600;
+}
+.searchInfoContainer:hover {
+  background: rgb(0 0 0 / 8%);
+}
+.searchImg {
+  height: 71px;
+  width: 48px;
+}
+.seachTitle {
+  margin-left: 16px;
+}
+.releasedDate {
+  margin-top: 5px;
+  color: #909090;
+  font-size: 14px;
 }

@@ -1,14 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
 import styles from "./HomePage.module.css";
 
 import Navigation from "../../Navigation/Navigation";
 import SearchBar from "../../SearchBar/SearchBar";
-import nullImg from "../../../Icons/null-img.jpg";
 
-import star from "../../../Icons/star.png";
 import MoviesDisplayBox from "./MoviesDisplayBox/MoviesDisplayBox";
 
 export default function Movies() {
@@ -55,6 +52,9 @@ export default function Movies() {
       setSearchMovie(res.data.results);
     });
   }, [search]);
+  {
+    console.log(searchMovie);
+  }
   return (
     <div className={styles.mainContainer}>
       <div className={styles.navigationContainer}>

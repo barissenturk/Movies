@@ -1,28 +1,30 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+
 import axios from "axios";
 
 import Navigation from "../../../Navigation/Navigation";
-import Overview from "./Overview/Overview";
-
-import styles from "./MoviesDetailPage.module.css";
-
-import nullImg from "../../../../Icons/null-img.jpg";
-import star from "../../../../Icons/star.png";
 import VideoPopup from "../../../VideoPopup/VideoPopup";
-import Cast from "./Cast/Cast";
-import SimilarMovies from "./SimilarMovies/SimilarMovies";
 
-export default function MoviesDetailPage() {
+import styles from "./TvShowDetail.module.css";
+import star from "../../../../Icons/star.png";
+import nullImg from "../../../../Icons/null-img.jpg";
+import TvShowDetailPageOverViewPage from "../TvShowDetailPage/TvShowsDetailOverView/TvShowsDetailOverViewPage";
+import Cast from "../../HomePage/MoviesDetailPage/Cast/Cast";
+import TvCast from "./TvCast/TvCast";
+import Seasons from "./TvShowsSeasons/Seasons";
+
+export default function TvShowDetailPage() {
   const params = useParams();
-  const [movie, setMovie] = useState({});
+  const [tvShows, setTvShows] = useState({});
   const [images, setImages] = useState({});
   const [movieGenres, setMovieGenres] = useState({});
   const [subNavMenu, setsubNavMenu] = useState(1);
   const [backdrop, setBackdrop] = useState();
   const [video, setvideo] = useState();
   const [teaser, setteaser] = useState();
-  const [similarMovie, setSimilarMovie] = useState({});
+  const [runtime, setRuntime] = useState();
+  const type = "tv";
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,38 +38,40 @@ export default function MoviesDetailPage() {
 
   useEffect(() => {
     fetchDetail();
-    fetchTrail();
-    FetchSimilarMovie();
   }, []);
 
-  const FetchSimilarMovie = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`
-      )
-      .then((res) => {
-        setSimilarMovie(res.data.results);
-      });
-  };
+  {
+    console.log(tvShows);
+  }
+  // const FetchSimilarMovie = () => {
+  //   axios
+  //     .get(
+  //       `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`
+  //     )
+  //     .then((res) => {
+  //       setSimilarMovie(res.data.results);
+  //     });
+  // };
 
-  const fetchTrail = async () => {
-    await axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US`
-      )
-      .then((res) => {
-        setvideo(res.data.results);
-      });
-  };
+  // const fetchTrail = async () => {
+  //   await axios
+  //     .get(
+  //       `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US`
+  //     )
+  //     .then((res) => {
+  //       setvideo(res.data.results);
+  //     });
+  // };
 
-  let api = `https://api.themoviedb.org/3/movie/${params.id}?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&append_to_response=images&include_image_language=en,null`;
+  let api = `https://api.themoviedb.org/3/tv/${params.id}?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&append_to_response=images&include_image_language=en,null`;
 
   const fetchDetail = async () => {
     await axios.get(api).then((res) => {
-      setMovie(res.data);
+      setTvShows(res.data);
       setMovieGenres(res.data.genres);
       setImages(res.data.images.backdrops);
       setBackdrop(res.data.images.backdrops[0]);
+      setRuntime(res.data.episode_run_time[0]);
     });
   };
 
@@ -88,9 +92,6 @@ export default function MoviesDetailPage() {
           />
         )}
 
-        {/* (
-         
-        )} */}
         <div className={styles.NavigationBar}>
           <Navigation />
         </div>
@@ -101,18 +102,18 @@ export default function MoviesDetailPage() {
           <img
             className={styles.poster}
             src={
-              movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/w400/` + movie.poster_path
+              tvShows.backdrop_path
+                ? `https://image.tmdb.org/t/p/w400/` + tvShows.poster_path
                 : nullImg
             }
             alt="poster"
           />
         </div>
         <div className={styles.overwievContainer}>
-          <div className={styles.title}>{movie.title}</div>
+          <div className={styles.title}>{tvShows.name}</div>
           <div className={styles.star}>
             <img className={styles.starIcon} src={star} />
-            {movie.vote_average} / 10
+            {tvShows.vote_average} / 10
           </div>
           <div
             className={styles.trailLink}
@@ -122,14 +123,14 @@ export default function MoviesDetailPage() {
             }}
           >
             <p className={styles.trailLinkText}>watch trailer </p>
-            {isOpen ? (
+            {/* {isOpen ? (
               <VideoPopup
                 movieId={params.id}
                 handleClose={togglePopup}
                 teaserKey={teaser}
                 video={video}
               />
-            ) : null}
+            ) : null} */}
           </div>
           <div className={styles.subNavMenuContainer}>
             <div
@@ -154,18 +155,27 @@ export default function MoviesDetailPage() {
                 setsubNavMenu(3);
               }}
             >
-              Recommendations
+              Seasons
             </div>
           </div>
           {subNavMenu == 1 ? (
-            <Overview movie={movie} movieGenres={movieGenres} images={images} />
+            <TvShowDetailPageOverViewPage
+              movie={tvShows}
+              movieGenres={movieGenres}
+              images={images}
+              runtime={runtime}
+            />
           ) : null}
           {subNavMenu == 2 ? (
-            <Cast movieId={params.id} movie={movie} movieGenres={movieGenres} />
+            <TvCast
+              movieId={params.id}
+              movie={tvShows}
+              movieGenres={movieGenres}
+              runtime={runtime}
+            />
           ) : null}
-          {subNavMenu == 3 ? (
-            <SimilarMovies similarMovie={similarMovie} />
-          ) : null}
+
+          {subNavMenu == 3 ? <Seasons /> : null}
         </div>
       </div>
     </div>
