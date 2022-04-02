@@ -25,7 +25,8 @@ export default function TvDisplayBox({ tvShows }) {
                 />
                 <h2 className={styles.title}>{tvShows.name}</h2>
                 <p className={styles.subcontentBox}>
-                  Rating:&nbsp; <img className={styles.starIcon} src={star} />
+                  Rating:&nbsp;
+                  <img className={styles.starIcon} alt="rate" src={star} />
                   {tvShows.vote_average.toFixed(1)} / 10 &nbsp; &nbsp;
                   {tvShows.first_air_date}
                 </p>

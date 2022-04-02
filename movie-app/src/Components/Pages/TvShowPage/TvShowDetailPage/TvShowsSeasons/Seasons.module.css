@@ -1,0 +1,68 @@
+
+.seasonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    margin-top: 30px;
+}
+.seasonCardBox{
+    width: 100%;
+}
+.seasonsCard{
+    display: flex;
+    height: 175px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: #0b233b 0px 0px 10px;
+    margin: 20px 0;
+    background-color: #071829;
+    margin-bottom: 30px;
+}
+
+.seasonCardImgBox{
+    background-color: lightgray;
+    height: 160px;
+    width: 100px;
+    border-radius: 8px;
+    background-image: url("https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 7.5px;
+
+
+
+}
+.seasonCardImg{
+    height: 160px;
+    border-radius: 8px;
+    
+}
+
+.seasonCardText{
+   display: flex;
+   flex-direction: column;
+    margin: 20px 0 0 20px;
+    color: #fff
+}
+.seasonCardText >h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.seasonCardText >h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 3px 0 0 0;
+}
+
+.seasonCardText >p {
+    font-size: 12px;
+    font-weight: 200;
+    margin: 10px 0 0 0;
+}

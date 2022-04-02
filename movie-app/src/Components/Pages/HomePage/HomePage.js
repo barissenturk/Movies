@@ -26,11 +26,13 @@ export default function Movies() {
     fetchTopRatedMovies();
     fetchUpcomingMovies();
     fetchSearchApi();
-  }, [search]);
-
-  {
-    console.log(search);
-  }
+  }, [
+    popularMoviesApi,
+    topRatedMoviesApi,
+    upcomingMoviesApi,
+    searchApi,
+    search,
+  ]);
 
   const fetchPopularMovies = useCallback(() => {
     axios.get(popularMoviesApi).then((res) => {
@@ -41,20 +43,20 @@ export default function Movies() {
     axios.get(topRatedMoviesApi).then((res) => {
       setTopRatedMovies(res.data.results);
     });
-  }, [popularMoviesApi]);
+  }, [topRatedMoviesApi]);
   const fetchUpcomingMovies = useCallback(() => {
     axios.get(upcomingMoviesApi).then((res) => {
       setUpcomingMovies(res.data.results);
     });
-  }, [popularMoviesApi]);
+  }, [upcomingMoviesApi]);
   const fetchSearchApi = useCallback(() => {
-    axios.get(searchApi).then((res) => {
-      setSearchMovie(res.data.results);
-    });
-  }, [search]);
-  {
-    console.log(searchMovie);
-  }
+    if (search !== "") {
+      axios.get(searchApi).then((res) => {
+        setSearchMovie(res.data.results);
+      });
+    }
+  }, [search, searchApi]);
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.navigationContainer}>

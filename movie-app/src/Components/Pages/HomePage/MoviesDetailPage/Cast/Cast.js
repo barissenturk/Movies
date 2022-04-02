@@ -29,6 +29,7 @@ export default function Cast({ movieId, movie, movieGenres }) {
           cast.slice(0, noOfElement).map((actor) => (
             <div className={styles.profileBox} key={actor.id}>
               <img
+                alt="actor"
                 src={`https://image.tmdb.org/t/p/w138_and_h175_face/${actor.profile_path}`}
               />
               <p className={styles.actorName}>{actor.name} </p>

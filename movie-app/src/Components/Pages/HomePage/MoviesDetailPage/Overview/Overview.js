@@ -33,6 +33,7 @@ export default function Overview({ movie, movieGenres, images }) {
                   }}
                 >
                   <img
+                    alt="movie"
                     className={styles.img}
                     src={`https://image.tmdb.org/t/p/w500/` + image.file_path}
                   />

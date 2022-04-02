@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Navigation.module.css";
-import Logo from "../../Icons/movienLogo.jpg";
 import { NavLink } from "react-router-dom";
 export default function Navigation() {
   return (

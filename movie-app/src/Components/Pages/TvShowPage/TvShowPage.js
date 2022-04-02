@@ -12,7 +12,7 @@ export default function TvShowPage() {
   const [onTvShows, setOnTvShows] = useState({});
   const [searchMovie, setSearchMovie] = useState([]);
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(" ");
 
   let topRatedTvShowsApi = `https://api.themoviedb.org/3/tv/top_rated?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
   let onTv = `https://api.themoviedb.org/3/tv/on_the_air?api_key=e106aa77a18cc7d63d4606b561bdda34&language=en-US&page=1`;
@@ -43,9 +43,11 @@ export default function TvShowPage() {
   }, [onTvShows]);
 
   const fetchSearchApi = useCallback(() => {
-    axios.get(searchApi).then((res) => {
-      setSearchMovie(res.data.results);
-    });
+    if (search !== " ") {
+      axios.get(searchApi).then((res) => {
+        setSearchMovie(res.data.results);
+      });
+    }
   }, [search]);
 
   return (

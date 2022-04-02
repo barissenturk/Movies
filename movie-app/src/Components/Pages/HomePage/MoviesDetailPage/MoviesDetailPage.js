@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 
@@ -76,9 +76,9 @@ export default function MoviesDetailPage() {
       <div className={styles.header}>
         {backdrop === undefined || null ? (
           <img
+            alt="movie"
             className={styles.backgroundImg}
             src="http://blockter.bdiakcml8h-e92498n216kr.p.runcloud.link/wp-content/themes/blockter/images/banner-bg.jpg"
-            alt=""
           />
         ) : (
           <img
@@ -111,7 +111,7 @@ export default function MoviesDetailPage() {
         <div className={styles.overwievContainer}>
           <div className={styles.title}>{movie.title}</div>
           <div className={styles.star}>
-            <img className={styles.starIcon} src={star} />
+            <img alt="rate" className={styles.starIcon} src={star} />
             {movie.vote_average} / 10
           </div>
           <div
@@ -157,13 +157,13 @@ export default function MoviesDetailPage() {
               Recommendations
             </div>
           </div>
-          {subNavMenu == 1 ? (
+          {subNavMenu === 1 ? (
             <Overview movie={movie} movieGenres={movieGenres} images={images} />
           ) : null}
-          {subNavMenu == 2 ? (
+          {subNavMenu === 2 ? (
             <Cast movieId={params.id} movie={movie} movieGenres={movieGenres} />
           ) : null}
-          {subNavMenu == 3 ? (
+          {subNavMenu === 3 ? (
             <SimilarMovies similarMovie={similarMovie} />
           ) : null}
         </div>

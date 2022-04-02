@@ -10,7 +10,6 @@ import styles from "./TvShowDetail.module.css";
 import star from "../../../../Icons/star.png";
 import nullImg from "../../../../Icons/null-img.jpg";
 import TvShowDetailPageOverViewPage from "../TvShowDetailPage/TvShowsDetailOverView/TvShowsDetailOverViewPage";
-import Cast from "../../HomePage/MoviesDetailPage/Cast/Cast";
 import TvCast from "./TvCast/TvCast";
 import Seasons from "./TvShowsSeasons/Seasons";
 
@@ -24,7 +23,6 @@ export default function TvShowDetailPage() {
   const [video, setvideo] = useState();
   const [teaser, setteaser] = useState();
   const [runtime, setRuntime] = useState();
-  const type = "tv";
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,9 +38,6 @@ export default function TvShowDetailPage() {
     fetchDetail();
   }, []);
 
-  {
-    console.log(tvShows);
-  }
   // const FetchSimilarMovie = () => {
   //   axios
   //     .get(
@@ -112,7 +107,7 @@ export default function TvShowDetailPage() {
         <div className={styles.overwievContainer}>
           <div className={styles.title}>{tvShows.name}</div>
           <div className={styles.star}>
-            <img className={styles.starIcon} src={star} />
+            <img className={styles.starIcon} alt="rate" src={star} />
             {tvShows.vote_average} / 10
           </div>
           <div
@@ -158,7 +153,7 @@ export default function TvShowDetailPage() {
               Seasons
             </div>
           </div>
-          {subNavMenu == 1 ? (
+          {subNavMenu === 1 ? (
             <TvShowDetailPageOverViewPage
               movie={tvShows}
               movieGenres={movieGenres}
@@ -166,7 +161,7 @@ export default function TvShowDetailPage() {
               runtime={runtime}
             />
           ) : null}
-          {subNavMenu == 2 ? (
+          {subNavMenu === 2 ? (
             <TvCast
               movieId={params.id}
               movie={tvShows}
@@ -175,7 +170,7 @@ export default function TvShowDetailPage() {
             />
           ) : null}
 
-          {subNavMenu == 3 ? <Seasons /> : null}
+          {subNavMenu === 3 ? <Seasons movie={tvShows} /> : null}
         </div>
       </div>
     </div>

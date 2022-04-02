@@ -37,6 +37,7 @@ export default function TvShowsDetailOverViewPage({
                   }}
                 >
                   <img
+                    alt="tv show"
                     className={styles.img}
                     src={`https://image.tmdb.org/t/p/w500/` + image.file_path}
                   />

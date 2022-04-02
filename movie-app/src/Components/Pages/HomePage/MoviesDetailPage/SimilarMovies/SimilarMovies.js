@@ -18,6 +18,7 @@ export default function SimilarMovies({ similarMovie }) {
             <div className={styles.moviesBox} key={movie.id}>
               <a href={`/${movie.id}/movieDetail`}>
                 <img
+                  alt="movie"
                   className={styles.moviesPoster}
                   src={`https://image.tmdb.org/t/p/w200/` + movie.poster_path}
                 />
@@ -27,7 +28,8 @@ export default function SimilarMovies({ similarMovie }) {
                 <p className={styles.overviewBox}>{movie.overview}</p>
                 <div className={styles.subcontentcontainer}>
                   <p className={styles.subcontentBox}>
-                    Rating:&nbsp; <img className={styles.starIcon} src={star} />
+                    Rating:&nbsp;{" "}
+                    <img className={styles.starIcon} alt="rate" src={star} />
                     {movie.vote_average.toFixed(1)} / 10
                   </p>
                   <p className={styles.subcontentBox}>

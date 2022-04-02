@@ -36,7 +36,7 @@ export default function SearchBar({ setSearch, search, searchMovie }) {
         return (
           <Link
             className={styles.searchInfoContainer}
-            to={`/${media.id}/movieDetail`}
+            to={`/${media.id}/tvDetail`}
             key={media.id}
           >
             <div className={styles.searchInfoBox}>

@@ -13,6 +13,7 @@
   font-weight: 400;
   line-height: 28px;
   color: #abb7c4;
+  min-width: 300px;
 
   max-width: 500px;
 }

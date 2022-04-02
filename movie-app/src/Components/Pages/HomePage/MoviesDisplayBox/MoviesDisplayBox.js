@@ -24,7 +24,8 @@ export default function MoviesDisplayBox({ movies }) {
                 />
                 <h2 className={styles.title}>{movie.title}</h2>
                 <p className={styles.subcontentBox}>
-                  Rating:&nbsp; <img className={styles.starIcon} src={star} />
+                  Rating:&nbsp;{" "}
+                  <img className={styles.starIcon} alt="rate" src={star} />
                   {movie.vote_average.toFixed(1)} / 10 &nbsp; &nbsp;
                   {movie.release_date}
                 </p>
